@@ -9,7 +9,9 @@ public class Task6 {
         safeList.add(4);
         safeList.add(5);
         safeList.printList();
-        Runnable runnable1 = () ->
+
+
+       Runnable runnable1 = () ->
         {
             for (int i = 0; i < safeList.getSize(); i++) {
                 try {

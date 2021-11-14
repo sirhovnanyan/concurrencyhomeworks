@@ -23,6 +23,7 @@ public class Task5 {
 
 class CartesianSystem {
     private int x;
+
     private int y;
 
     public void setXY(int x, int y) {

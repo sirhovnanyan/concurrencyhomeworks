@@ -32,18 +32,13 @@ public class SafeSimpleList<T> implements SimpleList<T> {
 
     @Override
     public synchronized void remove(int index) {
-        int newIndex = 0;
-        Object[] newElement = new Object[getSize() - 1];
-
-        for (int i = 0; i < getSize(); i++) {
-            if (i == index) {
-                continue;
-            }
-
-            newElement[newIndex] = this.elements[i];
-            newIndex++;
-        }
-        this.elements = newElement;
+       if(index<0 || index>=getSize()){
+           throw new IllegalArgumentException("Invalid index value");
+       }
+       for(int i=index;i<getSize();i++){
+           elements[i]=elements[i+1];
+       }
+       this.size--;
     }
 
     public void printList() {
