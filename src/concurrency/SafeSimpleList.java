@@ -1,5 +1,6 @@
 package concurrency;
 
+@SuppressWarnings("unchaked")
 public class SafeSimpleList<T> implements SimpleList<T> {
     private Object[] elements;
     private int size;
@@ -24,7 +25,7 @@ public class SafeSimpleList<T> implements SimpleList<T> {
         if (index < 0) {
             throw new IllegalArgumentException("Index can't be negative");
         }
-        if (index > size - 1) {
+        if (index > size ) {
             throw new IndexOutOfBoundsException();
         }
         return (T) this.elements[index];
@@ -35,15 +36,15 @@ public class SafeSimpleList<T> implements SimpleList<T> {
        if(index<0 || index>=getSize()){
            throw new IllegalArgumentException("Invalid index value");
        }
-       for(int i=index;i<getSize();i++){
+       for(int i=index;i<=getSize();i++){
            elements[i]=elements[i+1];
        }
        this.size--;
     }
 
-    public void printList() {
+    public synchronized void printList() {
         System.out.print(getClass() + " = [");
-        for (int i = 0; i < getSize(); i++) {
+        for (int i = 0; i <= getSize(); i++) {
             System.out.print(elements[i] + ", ");
         }
         System.out.println("]");

@@ -59,6 +59,7 @@ public class Task2 {
             thread.join();
         }
 
+
         System.out.println("Threads...");
         System.out.println((System.currentTimeMillis() - start1)); //output 190699 milliseconds
     }
